@@ -51,8 +51,17 @@
   .nav-links a:hover{color:var(--gold-light);text-decoration:none;}
 
   .hero{
-    max-width:1100px;margin:0 auto;
+    position:relative;
+    background-image:
+      linear-gradient(rgba(10,23,48,0.78), rgba(16,36,73,0.88)),
+      url('images/Gemini_Generated_Image_3pg97d3pg97d3pg9.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
     padding:90px 24px 70px;
+  }
+  .hero-inner{
+    max-width:1100px;margin:0 auto;
     text-align:center;
   }
   .hero .eyebrow{
@@ -120,6 +129,20 @@
   }
   .gallery .wide{grid-column:1 / -1;}
 
+  /* System architecture */
+  .architecture-diagram{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(240,180,41,0.15);
+    border-radius:12px;
+    overflow:hidden;
+    padding:12px;
+  }
+  .architecture-diagram img{
+    width:100%;
+    display:block;
+    border-radius:8px;
+  }
+
   /* Tool sections grid */
   .tool-group{margin-bottom:46px;}
   .tool-group h3{
@@ -127,6 +150,7 @@
     font-size:1.15rem;
     margin-bottom:16px;
     display:flex;align-items:center;gap:10px;
+    cursor:pointer;
   }
   .tool-group h3 .count{
     font-size:0.75rem;
@@ -290,6 +314,29 @@
     line-height:1;
   }
   .modal-close:hover{background:var(--gold-light);}
+  .modal-nav{
+    position:absolute;top:50%;
+    transform:translateY(-50%);
+    width:42px;height:42px;
+    border-radius:50%;
+    background:rgba(10,23,48,0.55);
+    border:1px solid rgba(240,180,41,0.4);
+    color:var(--gold);
+    font-size:1.6rem;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    line-height:1;
+    transition:background .2s, color .2s, border-color .2s;
+  }
+  .modal-nav:hover{
+    background:var(--gold);
+    color:var(--navy-deep);
+    border-color:var(--gold-light);
+  }
+  .modal-prev{left:10px;}
+  .modal-next{right:10px;}
+  .modal-nav.hidden{display:none;}
 
   @media (max-width:700px){
     .gallery{grid-template-columns:1fr;}
@@ -325,6 +372,7 @@
     <div class="nav-links">
       <a href="#overview">概要</a>
       <a href="#screenshots">画面</a>
+      <a href="#architecture">構成</a>
       <a href="#tools">機能</a>
       <a href="#demo">デモ</a>
       <a href="#stack">技術</a>
@@ -333,14 +381,16 @@
 </header>
 
 <div class="hero">
-  <div class="eyebrow">Personal Portfolio Project</div>
-  <h1>Investment Analysis System</h1>
-  <p>個人開発の投資分析システム群を一つに統合したWebポータル。米国市場・日本株式の分析から、UiPathによるデータ自動収集、AIエージェントによるデータメンテナンスまでをワンストップで提供します。</p>
-  <div class="hero-badges">
-    <span class="badge">14 Tools / 4 Sections</span>
-    <span class="badge">FastAPI + JavaScript</span>
-    <span class="badge">AI Chat Assistant</span>
-    <span class="badge">UiPath RPA連携</span>
+  <div class="hero-inner">
+    <div class="eyebrow">Personal Portfolio Project</div>
+    <h1>Investment Analysis System</h1>
+    <p>個人開発の投資分析システム群を一つに統合したWebポータル。米国市場・日本株式の分析から、UiPathによるデータ自動収集、AIエージェントによるデータメンテナンスまでをワンストップで提供します。</p>
+    <div class="hero-badges">
+      <span class="badge">14 Tools / 4 Sections</span>
+      <span class="badge">FastAPI + JavaScript</span>
+      <span class="badge">AI Chat Assistant</span>
+      <span class="badge">UiPath RPA連携</span>
+    </div>
   </div>
 </div>
 
@@ -379,37 +429,33 @@
       <img src="images/2_全体2.png" alt="投資分析ポータル 全体画面2">
       <figcaption>ポータル全体画面 2</figcaption>
     </figure>
-    <figure>
-      <img src="images/3_米国経済セクション.png" alt="米国市場分析セクション">
-      <figcaption>米国市場分析セクション</figcaption>
-    </figure>
-    <figure>
-      <img src="images/4_日本株式セクション.png" alt="日本株分析セクション">
-      <figcaption>日本株分析セクション</figcaption>
-    </figure>
-    <figure class="wide">
-      <img src="images/5_データ収集メンテナンスセクション.png" alt="データ収集・メンテナンスセクション">
-      <figcaption>UiPathデータ収集 / データメンテナンスセクション</figcaption>
-    </figure>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="section-title">System Architecture</div>
+  <p class="section-sub">システム全体構成図</p>
+  <div class="architecture-diagram">
+    <img id="architectureImg" src="" alt="System Architecture Diagram">
   </div>
 </section>
 
 <section id="tools">
   <div class="section-title">搭載ツール一覧</div>
-  <p class="section-sub">4セクション / 14ツール（カードをクリックすると画面イメージを表示します）</p>
+  <p class="section-sub">4セクション / 14ツール（見出し・カードをクリックすると画面イメージを表示します）</p>
 
   <div class="tool-group">
-    <h3>米国市場分析 <span class="count">3 tools</span></h3>
+    <h3 data-modal-img="images/3_米国経済セクション.png" title="クリックで画面を表示">米国市場分析 <span class="count">3 tools</span></h3>
     <div class="tool-grid">
-      <div class="tool-card" data-modal-img="images/3_米国経済セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/011_米国経済/01_分析結果.png","images/011_米国経済/01_各指標グラフ.png"]'>
         <div class="tname">経済指標分析（暴落監視）</div>
         <div class="tdesc">米国の主要経済指標をモニタリングし、市場の暴落リスクを早期に察知する分析ツール。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/3_米国経済セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/012_NYダウ株式/NYダウ株式.png"]'>
         <div class="tname">NYダウ分析</div>
         <div class="tdesc">NYダウの価格動向・トレンドを可視化し、相場の転換点を分析。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/3_米国経済セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/013_ドル円/ドル円ツール.png"]'>
         <div class="tname">ドル円分析</div>
         <div class="tdesc">USD/JPYの為替動向を分析し、株式市場との連動性を確認。</div>
       </div>
@@ -417,21 +463,21 @@
   </div>
 
   <div class="tool-group">
-    <h3>日本株分析 <span class="count">4 tools</span></h3>
+    <h3 data-modal-img="images/4_日本株式セクション.png" title="クリックで画面を表示">日本株分析 <span class="count">4 tools</span></h3>
     <div class="tool-grid">
-      <div class="tool-card" data-modal-img="images/4_日本株式セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/021_日本経済/1_分析レポート.png","images/021_日本経済/1_各指標.png"]'>
         <div class="tname">日本版経済指標分析</div>
         <div class="tdesc">日本国内の経済指標を集約し、米国版同様の暴落監視・トレンド分析を実施。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/4_日本株式セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/022_日本株式/1_業種内比較グラフ.png","images/022_日本株式/2_モート分析.png"]'>
         <div class="tname">株価分析（バフェット式）</div>
         <div class="tdesc">バフェット指数等のバリュエーション指標に基づき、個別株の割安・割高を判定。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/4_日本株式セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/023_サヤ取り/サヤ取り.png"]'>
         <div class="tname">サヤ取り分析</div>
         <div class="tdesc">関連銘柄間の価格差（サヤ）を分析し、ペアトレード機会を検出。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/4_日本株式セクション.png">
+      <div class="tool-card" data-modal-imgs='["images/024_StockAgent/stockAgent.png"]'>
         <div class="tname">Stock Agent</div>
         <div class="tdesc">AIエージェントが銘柄データを解析し、投資判断のヒントを自動生成。</div>
         <span class="ai-tag">AI AGENT</span>
@@ -440,17 +486,17 @@
   </div>
 
   <div class="tool-group">
-    <h3>UiPathデータ収集 <span class="count">3 tools</span></h3>
+    <h3 data-modal-img="images/5_データ収集メンテナンスセクション.png" title="クリックで画面を表示">UiPathデータ収集 <span class="count">3 tools</span></h3>
     <div class="tool-grid">
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">米国経済指標収集</div>
         <div class="tdesc">UiPathロボットが米国経済指標サイトを巡回し、最新データを自動取得。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">日本経済指標収集</div>
         <div class="tdesc">日本国内の経済指標発表データをRPAで定期収集。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">日本株価収集</div>
         <div class="tdesc">日本株の価格データをRPAで自動取得し、分析用DBへ蓄積。</div>
       </div>
@@ -458,21 +504,21 @@
   </div>
 
   <div class="tool-group">
-    <h3>データメンテナンス <span class="count">4 tools</span></h3>
+    <h3 data-modal-img="images/5_データ収集メンテナンスセクション.png" title="クリックで画面を表示">データメンテナンス <span class="count">4 tools</span></h3>
     <div class="tool-grid">
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">決算プロデータDL</div>
         <div class="tdesc">決算プロからの財務データダウンロードと取込みを自動化。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">前年株価データDL</div>
         <div class="tdesc">前年同期の株価データを取得し、比較分析の基礎データを整備。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">IRBankデータ取込</div>
         <div class="tdesc">IRBankの財務・業績データを取込み、分析用データセットに統合。</div>
       </div>
-      <div class="tool-card" data-modal-img="images/5_データ収集メンテナンスセクション.png">
+      <div class="tool-card" data-modal-imgs='["images/5_データ収集メンテナンスセクション.png"]'>
         <div class="tname">EDINET従業員データ取込</div>
         <div class="tdesc">EDINET APIを通じて有価証券報告書の従業員データを取込み・蓄積。</div>
       </div>
@@ -530,14 +576,16 @@
 <div id="imageModal" class="modal-overlay">
   <div class="modal-content">
     <button type="button" class="modal-close" aria-label="閉じる">&times;</button>
+    <button type="button" class="modal-nav modal-prev" aria-label="前の画像">&lsaquo;</button>
     <img id="modalImage" src="" alt="ツール画面イメージ">
+    <button type="button" class="modal-nav modal-next" aria-label="次の画像">&rsaquo;</button>
   </div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // scroll-in animation
-    var targets = document.querySelectorAll('#overview, #screenshots, #tools, #demo, #stack');
+    var targets = document.querySelectorAll('#overview, #screenshots, #architecture, #tools, #demo, #stack');
     targets.forEach(function (el) { el.classList.add('animate-on-scroll'); });
 
     var observer = new IntersectionObserver(function (entries) {
@@ -551,32 +599,83 @@
 
     targets.forEach(function (el) { observer.observe(el); });
 
-    // image modal
+    // image modal (supports single or multiple images with slideshow navigation)
     var modal = document.getElementById('imageModal');
     var modalImage = document.getElementById('modalImage');
     var modalClose = modal.querySelector('.modal-close');
+    var modalPrev = modal.querySelector('.modal-prev');
+    var modalNext = modal.querySelector('.modal-next');
 
-    function openModal(src) {
-      modalImage.src = src;
+    var modalImages = [];
+    var modalIndex = 0;
+
+    function renderModalImage() {
+      modalImage.src = modalImages[modalIndex];
+      var multi = modalImages.length > 1;
+      modalPrev.classList.toggle('hidden', !multi);
+      modalNext.classList.toggle('hidden', !multi);
+    }
+
+    function openModal(images) {
+      modalImages = images;
+      modalIndex = 0;
+      renderModalImage();
       modal.classList.add('open');
     }
     function closeModal() {
       modal.classList.remove('open');
       modalImage.src = '';
+      modalImages = [];
+      modalIndex = 0;
+    }
+    function showPrev() {
+      if (modalImages.length < 2) return;
+      modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+      renderModalImage();
+    }
+    function showNext() {
+      if (modalImages.length < 2) return;
+      modalIndex = (modalIndex + 1) % modalImages.length;
+      renderModalImage();
     }
 
-    document.querySelectorAll('.tool-card[data-modal-img]').forEach(function (card) {
+    // individual tool cards (single image or 2-image slideshow)
+    document.querySelectorAll('.tool-card[data-modal-imgs]').forEach(function (card) {
       card.addEventListener('click', function () {
-        openModal(card.getAttribute('data-modal-img'));
+        var images = [];
+        try {
+          images = JSON.parse(card.getAttribute('data-modal-imgs'));
+        } catch (err) {
+          images = [];
+        }
+        if (images.length) openModal(images);
+      });
+    });
+
+    // section headings (single section screenshot)
+    document.querySelectorAll('.tool-group h3[data-modal-img]').forEach(function (heading) {
+      heading.addEventListener('click', function () {
+        openModal([heading.getAttribute('data-modal-img')]);
       });
     });
 
     modalClose.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showPrev();
+    });
+    modalNext.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showNext();
+    });
     modal.addEventListener('click', function (e) {
       if (e.target === modal) closeModal();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeModal();
+      else if (e.key === 'ArrowLeft') showPrev();
+      else if (e.key === 'ArrowRight') showNext();
     });
   });
 </script>
