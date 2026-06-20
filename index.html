@@ -136,11 +136,14 @@
     border-radius:12px;
     overflow:hidden;
     padding:12px;
+    max-width:900px;
+    margin:0 auto;
   }
   .architecture-diagram img{
     width:100%;
     display:block;
     border-radius:8px;
+    cursor:pointer;
   }
 
   /* Tool sections grid */
@@ -436,7 +439,7 @@
   <div class="section-title">System Architecture</div>
   <p class="section-sub">システム全体構成図</p>
   <div class="architecture-diagram">
-    <img id="architectureImg" src="" alt="System Architecture Diagram">
+    <img id="architectureImg" src="images/0_全体概要図.png" alt="投資分析システム全体構成図">
   </div>
 </section>
 
@@ -658,6 +661,14 @@
         openModal([heading.getAttribute('data-modal-img')]);
       });
     });
+
+    // architecture diagram
+    var architectureImg = document.getElementById('architectureImg');
+    if (architectureImg) {
+      architectureImg.addEventListener('click', function () {
+        openModal([architectureImg.getAttribute('src')]);
+      });
+    }
 
     modalClose.addEventListener('click', closeModal);
     modalPrev.addEventListener('click', function (e) {
