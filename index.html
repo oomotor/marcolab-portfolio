@@ -427,7 +427,7 @@
     <img id="architectureImg" src="images/0_全体概要図.png" alt="投資分析システム全体構成図">
   </div>
   <div class="architecture-diagram" style="margin-top:2rem;">
-    <img src="MarcoLab_投資分析ポータルの解説.png" alt="MarcoLab 投資分析ポータルの解説">
+    <img id="explanationImg" src="MarcoLab_投資分析ポータルの解説.png" alt="MarcoLab 投資分析ポータルの解説">
   </div>
 </section>
 
@@ -673,6 +673,13 @@
     if (architectureImg) {
       architectureImg.addEventListener('click', function () {
         openModal([architectureImg.getAttribute('src')]);
+      });
+    }
+
+    var explanationImg = document.getElementById('explanationImg');
+    if (explanationImg) {
+      explanationImg.addEventListener('click', function () {
+        openModal([explanationImg.getAttribute('src')]);
       });
     }
 
